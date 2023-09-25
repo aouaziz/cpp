@@ -16,9 +16,14 @@
 
 Fixed &Fixed::operator=(const Fixed& origenal)
 {
-    std::cout << "Copy assignment operator called\n";
     this->number = origenal.getRawBits();
     return(*this);
+}
+
+std::ostream &operator<<(std::ostream& COUT, const Fixed& object)
+{
+    COUT << object.toFloat();
+    return(COUT);
 }
 
 Fixed::Fixed()
@@ -32,14 +37,32 @@ Fixed::Fixed(const Fixed& copy)
     *this = copy;
 }
 
+Fixed::Fixed(const int value)
+{
+    std::cout <<"Int constructor called\n";
+    this->number = value << this->shift;
+}
+
+Fixed::Fixed(const float value)
+{
+    std::cout <<"Float constructor called\n";
+    this->number = roundf(value *(1 << this->shift)); 
+}
+float Fixed::toFloat(void) const
+{
+    return((float)this->number / (float)( 1 << this->shift));
+}
+int Fixed::toInt(void) const
+{
+    return(this->number >> this->shift);
+}
+
 int Fixed::getRawBits()const
 {
-    std::cout <<"getRawBits member function called\n";
     return(this->number);
 }
 void Fixed::setRawBits( int const raw )
 {
-    std::cout <<"setRawBits member function called\n";
     this->number = raw;
 }
 Fixed::~Fixed()
