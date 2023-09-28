@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 09:24:01 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/09/21 11:44:42 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/09/27 18:17:03 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ Fixed &Fixed::operator=(const Fixed& origenal)
 Fixed::Fixed()
 {
     std::cout <<"Default constructor called\n";
+    this->number = 0;
 }
 
 Fixed::Fixed(const Fixed& copy)

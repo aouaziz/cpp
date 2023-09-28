@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 09:24:04 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/09/21 11:40:02 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/09/27 18:20:32 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,5 @@ public:
     void setRawBits( int const raw );
 };
 std::ostream &operator<<(std::ostream& COUT, const Fixed& object);	
+
 #endif

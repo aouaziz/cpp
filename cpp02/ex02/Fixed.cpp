@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 09:24:01 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/09/21 11:44:42 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/09/27 18:47:08 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ bool Fixed::operator!=(const Fixed& other) const
 
 Fixed::Fixed()
 {
+    this->number = 0;
 }
 
 Fixed::Fixed(const Fixed& copy)
@@ -86,6 +87,9 @@ Fixed::Fixed(const int value)
 Fixed::Fixed(const float value)
 {
     this->number = roundf(value *(1 << this->shift)); 
+}
+Fixed::~Fixed()
+{
 }
 
 //
@@ -131,6 +135,7 @@ Fixed& Fixed::max( Fixed& a,  Fixed& b)
 }
 const Fixed& Fixed::max(const Fixed& a, const Fixed& b) 
 {
+    std::cout << "ana hana \n";
     if(a.toFloat() > b.toFloat())
         return(a);
     return(b);
@@ -154,7 +159,4 @@ int Fixed::getRawBits()const
 void Fixed::setRawBits( int const raw )
 {
     this->number = raw;
-}
-Fixed::~Fixed()
-{
 }
