@@ -6,16 +6,17 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 04:21:52 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/09/29 04:12:46 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/09/29 04:29:26 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main()
 {
 	ScavTrap a;
-	ScavTrap b("Cody");
+	FragTrap b("Cody");
 	a.guardGate();
 	std::cout << "\n -------------a vs b-------------\n";
 	for (int i = 0; i < 6; i++)
@@ -31,5 +32,6 @@ int main()
 	}
 	std::cout << "\n";
 	a.guardGate();
+	b.highFivesGuys();
 	return (0);
 }
