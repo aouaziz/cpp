@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 04:14:42 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/09/29 04:28:23 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/09/30 05:54:20 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ FragTrap &FragTrap::operator=(const FragTrap& object)
 
 FragTrap::~FragTrap()
 {
-     if(this->NAME  == "")
-        return;
     std::cout << "FragTrap " << this->NAME << " is destructed!" << std::endl;
 }
 void   FragTrap::highFivesGuys()

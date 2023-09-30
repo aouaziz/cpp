@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 19:00:29 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/09/29 04:09:47 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/09/30 05:54:39 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ ScavTrap &ScavTrap::operator=(const ScavTrap& object)
 
 ScavTrap::~ScavTrap()
 {
-     if(this->NAME  == "")
-        return;
     std::cout << "ScavTrap " << this->NAME << " is destructed!" << std::endl;
 }
 

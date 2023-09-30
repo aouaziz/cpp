@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 04:22:04 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/09/29 04:11:35 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/09/30 05:55:19 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,6 @@ ClapTrap::ClapTrap(const ClapTrap& object)
 }
 ClapTrap::ClapTrap(std::string name)
 {
-    if(name  == "")
-    {
-        std::cout << "Invalid Name.\n";
-        return;
-    }
     this->NAME = name;
     this->Energy_points =10;
     this->Hit_points = 10;
@@ -48,8 +43,6 @@ ClapTrap &ClapTrap::operator=(const ClapTrap& object)
 }
 ClapTrap::~ClapTrap()
 {
-    if(this->NAME  == "")
-        return;
     std::cout << this->NAME << " has been destroyed." << std::endl;
 }
 
