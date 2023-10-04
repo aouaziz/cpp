@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 10:42:50 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/10/02 10:49:25 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/10/04 16:22:07 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,8 @@ Animal &Animal::operator=(const Animal& animal)
 Animal::~Animal()
 {
     std::cout << " Animal destructor called." << std::endl;
+}
+std::string Animal::gettype(void)
+{
+    return(this->type);   
 }
