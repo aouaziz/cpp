@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/01 10:43:24 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/10/05 17:46:00 by aouaziz          ###   ########.fr       */
+/*   Created: 2023/10/05 17:20:17 by aouaziz           #+#    #+#             */
+/*   Updated: 2023/10/05 17:46:16 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
+#ifndef WRONGCAT_HPP
+#define WRONGCAT_HPP
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-class Dog:public Animal{
+class WrongCat:public WrongAnimal{
     public:
-    Dog();
-    Dog(std::string name);
+    WrongCat();
+    WrongCat(std::string name);
 	void makeSound() const ;
-    ~Dog();
+    ~WrongCat();
 };
 
 #endif
