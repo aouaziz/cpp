@@ -6,22 +6,22 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 10:43:18 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/10/10 15:14:58 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/10/10 17:16:53 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog():Animal("Dog")
+Dog::Dog():AAnimal("Dog")
 {
         std::cout << "Default Dog constructor called." << std::endl;
 }
-Dog::Dog(std::string name):Animal(name)
+Dog::Dog(std::string name):AAnimal(name)
 {
         std::cout << "Dog constructor called." << std::endl;
 }
 
-Dog::Dog(const Dog& object):Animal(object)
+Dog::Dog(const Dog& object):AAnimal(object)
 {
     std::cout << "Dog copy constructor called." << std::endl;
 	*this = object;

@@ -6,24 +6,24 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 10:43:42 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/10/10 15:14:29 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/10/10 17:16:47 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat():Animal("Cat")
+Cat::Cat():AAnimal("Cat")
 {
 	this->brain = new Brain();
 	std::cout << "Default Cat constructor called." << std::endl;
 }
 
-Cat::Cat(std::string name):Animal(name)
+Cat::Cat(std::string name):AAnimal(name)
 {
     std::cout << "Cat constructor called." << std::endl;
     this->brain = new Brain();
 }
-Cat::Cat(const Cat& object):Animal(object)
+Cat::Cat(const Cat& object):AAnimal(object)
 {
     std::cout << "Cat copy constructor called." << std::endl;
 	*this = object;

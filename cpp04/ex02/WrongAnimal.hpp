@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:01:46 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/10/10 15:21:08 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/10/10 16:17:51 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ class WrongAnimal
     public:
     WrongAnimal();
     WrongAnimal(std::string Type);
-    WrongAnimal(const WrongAnimal& animal);
-    WrongAnimal &operator=(const WrongAnimal& animal);
+    WrongAnimal(const WrongAnimal& AAnimal);
+    WrongAnimal &operator=(const WrongAnimal& AAnimal);
     virtual ~WrongAnimal();
     std::string getType(void) const;
     void makeSound() const ;

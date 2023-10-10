@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 10:44:07 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/10/05 17:42:54 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/10/10 15:34:29 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ int main()
     std::cout << "--------------- Wrong Animal Sound---------------" << std::endl;
     wrongMeta->makeSound();
     wrongCat->makeSound();
+
     return 0;
 }

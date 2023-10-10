@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/05 17:01:46 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/10/10 15:21:08 by aouaziz          ###   ########.fr       */
+/*   Created: 2023/10/01 10:42:55 by aouaziz           #+#    #+#             */
+/*   Updated: 2023/10/10 16:17:51 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_HPP
-#define WRONGANIMAL_HPP
+#ifndef AANIMAL_HPP
+#define AANIMAL_HPP
 
 #include <iostream>
 #include "Brain.hpp"
-class WrongAnimal
+class AAnimal
 {
     protected:
         std::string type;
     public:
-    WrongAnimal();
-    WrongAnimal(std::string Type);
-    WrongAnimal(const WrongAnimal& animal);
-    WrongAnimal &operator=(const WrongAnimal& animal);
-    virtual ~WrongAnimal();
+    AAnimal();
+    AAnimal(std::string Type);
+    AAnimal(const AAnimal& AAnimal);
+    AAnimal &operator=(const AAnimal& AAnimal);
     std::string getType(void) const;
-    void makeSound() const ;
+    virtual ~AAnimal();
+    virtual void makeSound() const = 0 ;
 };
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:20:17 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/10/05 17:46:16 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/10/10 15:21:21 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class WrongCat:public WrongAnimal{
     WrongCat();
     WrongCat(std::string name);
 	void makeSound() const ;
-    ~WrongCat();
+    virtual ~WrongCat();
 };
 
 #endif
