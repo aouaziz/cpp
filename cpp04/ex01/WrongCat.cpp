@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:20:19 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/10/10 15:15:27 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/10/11 19:26:23 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ WrongCat::WrongCat(std::string name):WrongAnimal(name)
 WrongCat::WrongCat(const WrongCat& object):WrongAnimal(object)
 {
     std::cout << "WrongCat copy constructor called." << std::endl;
+	this->brain = new Brain(*object.brain);
 	*this = object;
         
 }
@@ -31,15 +32,14 @@ WrongCat &WrongCat::operator=(const WrongCat& object)
 {
 	if(this != &object)
 	{
-		this->brain = new Brain(*object.brain);
 		this->type = object.type;
 	}
 	return(*this);
 }
 
 WrongCat::~WrongCat(){
-        delete this->brain;
         std::cout << " WrongCat destructor called." << std::endl;
+        delete brain;
 }
 
 

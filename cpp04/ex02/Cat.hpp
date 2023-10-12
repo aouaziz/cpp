@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 10:43:55 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/10/10 16:16:34 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/10/12 07:41:40 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ class Cat:public AAnimal{
     ~Cat();
 	
     void makeSound() const ;
-    
+    std::string *getideas();
+    void setideas(std::string idea);
+
 };
 
 #endif

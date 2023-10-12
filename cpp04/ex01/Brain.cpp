@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:20:58 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/10/10 15:04:54 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/10/10 18:40:13 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ Brain::Brain()
 
 Brain::~Brain()
 {
-    delete [] (this->ideas);
     std::cout << "Brain destroyed" << std::endl;
+    delete [] ideas;
 }
 
 Brain::Brain(const Brain& object)

@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 10:43:24 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/10/10 17:16:20 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/10/12 07:41:46 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ class Dog:public AAnimal{
     ~Dog();
 	
     void makeSound() const ;
+    std::string *getideas();
+    void setideas(std::string idea);
+
 };
 
 #endif
