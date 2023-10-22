@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 10:43:42 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/10/05 17:46:09 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/10/14 13:13:02 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,18 @@ Cat::~Cat(){
 void Cat::makeSound()const
 {
         std::cout << "meows meows\n"; 
+}
+
+Cat::Cat(const Cat& object):Animal(object)
+{
+    std::cout << "Cat copy constructor called." << std::endl;
+	*this = object;
+        
+}
+
+Cat &Cat::operator=(const Cat& object)
+{
+	if(this != &object)
+		this->type = object.type;
+	return(*this);
 }

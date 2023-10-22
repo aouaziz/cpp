@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 10:43:18 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/10/12 07:42:20 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/10/14 15:14:48 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Dog::Dog(std::string name):AAnimal(name)
 Dog::Dog(const Dog& object):AAnimal(object)
 {
     std::cout << "Dog copy constructor called." << std::endl;
-	this->brain = new Brain(*object.brain);
+	brain = new Brain();	
 	*this = object;
         
 }
@@ -34,14 +34,16 @@ Dog &Dog::operator=(const Dog& object)
 {
 	if(this != &object)
 	{
-		this->type = object.type;
+		this->AAnimal::operator=(object);
+		delete this->brain;
+		this->brain = new Brain(*object.brain);
 	}
 	return(*this);
 }
 
 Dog::~Dog(){
         std::cout << " Dog destructor called." << std::endl;
-	    delete brain;
+	    delete this->brain;
 }
 
 void Dog::makeSound()const

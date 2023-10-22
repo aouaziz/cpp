@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:21:06 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/10/12 07:37:10 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/10/14 15:14:48 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 class Brain{
     private:
-        std::string *ideas;
+        std::string ideas[100];
     public:
         Brain();
         

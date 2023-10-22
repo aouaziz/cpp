@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 10:43:24 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/10/05 17:46:00 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/10/14 13:10:41 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,13 @@ class Dog:public Animal{
     public:
     Dog();
     Dog(std::string name);
-	void makeSound() const ;
+    
+    Dog(const Dog& object);
+    Dog &operator=(const Dog& object);
+    
     ~Dog();
+	
+    void makeSound() const ;
 };
 
 #endif

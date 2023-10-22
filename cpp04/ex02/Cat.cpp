@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 10:43:42 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/10/12 07:42:05 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/10/14 15:14:48 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 Cat::Cat():AAnimal("Cat")
 {
-	this->brain = new Brain();
 	std::cout << "Default Cat constructor called." << std::endl;
+	this->brain = new Brain();
 }
 
 Cat::Cat(std::string name):AAnimal(name)
@@ -26,7 +26,7 @@ Cat::Cat(std::string name):AAnimal(name)
 Cat::Cat(const Cat& object):AAnimal(object)
 {
     std::cout << "Cat copy constructor called." << std::endl;
-	this->brain = new Brain(*object.brain);
+	brain = new Brain();	
 	*this = object;
         
 }
@@ -34,7 +34,11 @@ Cat::Cat(const Cat& object):AAnimal(object)
 Cat &Cat::operator=(const Cat& object)
 {
 	if(this != &object)
-		this->type = object.type;
+	{
+		this->AAnimal::operator=(object);
+		delete this->brain;
+		this->brain = new Brain(*object.brain);
+	}
 	return(*this);
 }
 void Cat::makeSound()const
@@ -43,14 +47,13 @@ void Cat::makeSound()const
 }
 Cat::~Cat(){
     std::cout << " Cat destructor called." << std::endl;
-    delete brain;
+	delete this->brain;
 }
 
 std::string *Cat::getideas()
 {
 	return(this->brain->getideas());
 }
-
 void Cat::setideas(std::string idea)
 {
 	this->brain->setideas(idea);
