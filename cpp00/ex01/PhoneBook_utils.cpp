@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:29:53 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/09/08 16:13:54 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/10/22 23:33:54 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ void PhoneBook::SetFname()
     data = "";
     while (!std::cin.eof() && data == "")
     {
-        if (std::cin.eof())
-            return;
+        // if (std::cin.eof())
+        //     return;
         std::cout << "Enter a First Name >" ;
         std::getline(std::cin,data);
         if((data.size() == countSpice(data)))

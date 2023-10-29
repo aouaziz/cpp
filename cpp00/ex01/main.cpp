@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 18:31:10 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/09/08 16:14:57 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/10/22 23:36:23 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ int main()
     welcome();
     book.setindex(0);
     book.setoverflow(0);
-    while(true)
+    while(!std::cin.eof())
     {
-        if (std::cin.eof())
-            return(1);
+        // if (std::cin.eof())
+        //     return(1);
         std::cout << "Enter a command > ";
         std::getline(std::cin,command);
         if(command == "ADD")
