@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Span.hpp                                           :+:      :+:    :+:   */
+/*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 16:29:32 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/11/16 14:44:31 by aouaziz          ###   ########.fr       */
+/*   Created: 2023/11/16 14:58:34 by aouaziz           #+#    #+#             */
+/*   Updated: 2023/11/16 15:42:52 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPAN_HPP
-#define SPAN_HPP
+#ifndef MUTANTSTACK_HPP
+#define MUTANTSTACK_HPP
 
-#include <iostream>
-#include <vector>
+# include <stack>
+# include <list> 
 
-class Span
+template< typename T > 
+class MutantStack : public std::stack<T>
 {
-private:
-    std::vector<unsigned int> v;
-    unsigned int max;
-public:
-    Span(unsigned int n);
-    Span(const Span &object);
-    Span &operator=(const Span &object);
-    void addNumber(int n);
-    unsigned int shortestSpan();
-    unsigned int longestSpan();
-    ~Span();
-
+    public:
+        typedef typename std::stack<T>::container_type::iterator iterator;
+            
+        MutantStack() : std::stack<T>(){};
+        iterator begin(){return(c.begin());};
+        virtual ~MutantStack(){};
 };
+
 
 
 
