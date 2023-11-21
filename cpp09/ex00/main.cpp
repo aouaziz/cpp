@@ -6,14 +6,14 @@ bool  BitcoinExchange::CheckData(float value)
     if(value < 0 )
     {
        std::cerr <<"Error: not a positive number.\n";
-       return true;
+       return false;
     }
     else if(value > 1000)
     {
        std::cerr <<"Error: too large a number.\n";
-       return true;
+       return false;
     }   
-    return false; 
+    return true; 
 }
 
 void BitcoinExchange::processInputFile(const std::string& filename)
@@ -22,6 +22,7 @@ void BitcoinExchange::processInputFile(const std::string& filename)
     if(!file.is_open())
         throw std::runtime_error("Error: Failed to open input file");
     std::string Data;
+    std::string check;
     std::string line;
     float value;
     std::getline(file,line);
@@ -29,13 +30,14 @@ void BitcoinExchange::processInputFile(const std::string& filename)
     while (std::getline(file,line))
     {
         CheckPipe(line);
-        if(!CheckPipe(line) && line.size() >= 13)
+        if(CheckPipe(line) && line.size() >= 13)
         {
-             Data = line.substr(0,10);
+            Data = line.substr(0,10);
             std::stringstream convert;
-            convert << line.substr(13);
+            check = line.substr(13);
+            convert << check;
             convert >> value;
-            if(!CheckData(value))
+            if(isValidValue(check) && CheckData(value))
             {
                 float final = CheckMap(Data);
                 if(final)
@@ -68,5 +70,5 @@ int main(int ac ,char **av)
     {
         std::cerr << e.what() << '\n';
     }
-    
+    return(0);
 }

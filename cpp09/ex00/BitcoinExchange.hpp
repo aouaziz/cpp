@@ -23,6 +23,7 @@ class BitcoinExchange
         bool CheckData(float value);
         void printData(std::string Data,float input_value , float Data_value);
         float CheckMap(std::string Data);
+        bool isValidValue(const std::string& value) ;
 };
 
 

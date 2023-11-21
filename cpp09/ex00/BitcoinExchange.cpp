@@ -67,20 +67,38 @@ bool BitcoinExchange::CheckPipe(std::string line)
     if(line.empty())
     {
         std::cerr<<"Error: invalid line \n";
-        return true;
+        return false;
     }
     size_t dx  = line.find("|");
     if(dx == line.size() || dx <= 1 )
         i = true;
-    else if( line[dx+1] != ' ' || line[dx-1] != ' ' )
+    else if( line[dx+1] != ' ' || line[dx-1] != ' ')
         i = true;
     if(i == true)
-        return true;
-    return false;
+        return false;
+    return true;
 }
 
 void BitcoinExchange::printData(std::string Data,float input_value , float Data_value)
 {
     float r = (input_value * Data_value);
     std::cout << Data <<" => " << input_value << " = " << r << std::endl;
+}
+bool BitcoinExchange::isValidValue(const std::string& value) {
+    std::stringstream convert(value);
+    char c;
+    std::string exe = "\t -+.";
+    if(value[0] == ' ' || value[0] == '\t')
+    {
+        std::cerr << "Erorr: invalid value format \n";
+        return false;
+    }
+    while (convert.get(c)) {
+        if (!exe.find(c) && c != '.'&& !std::isdigit(c)) {
+            std::cerr << "Erorr: Non-numeric character found \n";
+            return false; 
+        }
+    }
+
+    return true;
 }
