@@ -19,8 +19,8 @@ class BitcoinExchange
         void start(void);
         void processInputFile(const std::string& filename);
         void CheckPipE(std::string line);
-        void CheckPipe(std::string line);
-        void CheckData(std::string Data,float value);
+        bool CheckPipe(std::string line);
+        bool CheckData(float value);
         void printData(std::string Data,float input_value , float Data_value);
         float CheckMap(std::string Data);
 };

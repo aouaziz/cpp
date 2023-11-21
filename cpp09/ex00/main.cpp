@@ -1,22 +1,19 @@
 #include "BitcoinExchange.hpp"
 
 
-void  BitcoinExchange::CheckData(std::string Data,float value)
+bool  BitcoinExchange::CheckData(float value)
 {
     if(value < 0 )
     {
        std::cerr <<"Error: not a positive number.\n";
-       return;
+       return true;
     }
     else if(value > 1000)
     {
        std::cerr <<"Error: too large a number.\n";
-       return;
-    }    
-    float final = CheckMap(Data);
-    std::cout << Data << " => " << final << "\n";
-    if(final)
-        printData(Data,value,final);
+       return true;
+    }   
+    return false; 
 }
 
 void BitcoinExchange::processInputFile(const std::string& filename)
@@ -32,11 +29,23 @@ void BitcoinExchange::processInputFile(const std::string& filename)
     while (std::getline(file,line))
     {
         CheckPipe(line);
-        Data = line.substr(0,10);
-        std::stringstream convert;
-        convert << line.substr(13);
-        convert >> value;
-        CheckData(Data,value);
+        if(!CheckPipe(line) && line.size() >= 13)
+        {
+             Data = line.substr(0,10);
+            std::stringstream convert;
+            convert << line.substr(13);
+            convert >> value;
+            if(!CheckData(value))
+            {
+                float final = CheckMap(Data);
+                if(final)
+                    printData(Data,value,final);
+            }
+        }
+        else 
+        {
+            std::cerr << "Error: invalid format " << line << "\n";
+        }
     }
     file.close();
 }

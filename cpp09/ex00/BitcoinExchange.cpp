@@ -61,13 +61,13 @@ void BitcoinExchange::CheckPipE(std::string line)
         throw std::out_of_range("invalid format in the first line of the input file");
 }
 
-void BitcoinExchange::CheckPipe(std::string line)
+bool BitcoinExchange::CheckPipe(std::string line)
 {
     bool i = false;
     if(line.empty())
     {
         std::cerr<<"Error: invalid line \n";
-        return;
+        return true;
     }
     size_t dx  = line.find("|");
     if(dx == line.size() || dx <= 1 )
@@ -75,7 +75,8 @@ void BitcoinExchange::CheckPipe(std::string line)
     else if( line[dx+1] != ' ' || line[dx-1] != ' ' )
         i = true;
     if(i == true)
-       std::cerr <<"Error: invalid format \n";
+        return true;
+    return false;
 }
 
 void BitcoinExchange::printData(std::string Data,float input_value , float Data_value)
