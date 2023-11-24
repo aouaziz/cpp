@@ -16,7 +16,7 @@ bool  BitcoinExchange::CheckData(float value)
     return true; 
 }
 
-void BitcoinExchange::processInputFile(const std::string& filename)
+void BitcoinExchange::processInputFile(std::string filename)
 {
     std::fstream file(filename.c_str());
     if(!file.is_open())

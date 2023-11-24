@@ -6,6 +6,7 @@ BitcoinExchange::BitcoinExchange()
 
 BitcoinExchange::~BitcoinExchange()
 {
+    data.clear();
 }
 
 BitcoinExchange::BitcoinExchange(BitcoinExchange const &other)
@@ -23,7 +24,7 @@ void BitcoinExchange::start()
 {
     std::fstream file("./data.csv");
     if(!file.is_open())
-        throw std::runtime_error("Failed to open data.csv");
+        throw std::out_of_range("Error: Invalid format in the first line of the input file. Expected data format is 'YYYY-MM-DD | value'.");
     std::string line;
     std::string Data;
     float value;
@@ -44,21 +45,21 @@ float BitcoinExchange::CheckMap(std::string Data) {
             return it->second;
         }
     }
-    std::cout << "No match found for Data: " << Data << "\n";
+    std::cout << "Error: No match found for Data: " << Data << "\n";
     return 0;
 }
 void BitcoinExchange::CheckPipE(std::string line)
 {
     bool i = false;
     if(line.empty())
-        throw std::out_of_range("invalid format in the first line of the input file");
+        throw std::out_of_range("Error: Invalid format in the first line of the input file. Expected data format is 'YYYY-MM-DD | value'.");
     size_t dx  = line.find("|");
     if(dx == line.size() || dx <= 1 )
         i = true;
     else if( line[dx+1] != ' ' || line[dx-1] != ' ' )
         i = true;
     if(i == true)
-        throw std::out_of_range("invalid format in the first line of the input file");
+        throw std::out_of_range("Error: Invalid format in the first line of the input file. Expected data format is 'YYYY-MM-DD | value'.");
 }
 
 bool BitcoinExchange::CheckPipe(std::string line)
@@ -66,7 +67,7 @@ bool BitcoinExchange::CheckPipe(std::string line)
     bool i = false;
     if(line.empty())
     {
-        std::cerr<<"Error: invalid line \n";
+        std::cerr<<"Error: Invalid line. \n";
         return false;
     }
     size_t dx  = line.find("|");
@@ -84,18 +85,18 @@ void BitcoinExchange::printData(std::string Data,float input_value , float Data_
     float r = (input_value * Data_value);
     std::cout << Data <<" => " << input_value << " = " << r << std::endl;
 }
-bool BitcoinExchange::isValidValue(const std::string& value) {
+bool BitcoinExchange::isValidValue(std::string value) {
     std::stringstream convert(value);
     char c;
     std::string exe = "\t -+.";
     if(value[0] == ' ' || value[0] == '\t')
     {
-        std::cerr << "Erorr: invalid value format \n";
+        std::cerr << "Error: Invalid value format. \n";
         return false;
     }
     while (convert.get(c)) {
         if (!exe.find(c) && c != '.'&& !std::isdigit(c)) {
-            std::cerr << "Erorr: Non-numeric character found \n";
+            std::cerr << "Error: Non-numeric character found in value. \n";
             return false; 
         }
     }
