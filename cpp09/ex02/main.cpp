@@ -1,67 +1,62 @@
 #include "PmergeMe.hpp"
 
 
-void PmergeMe::MergeSorted(std::deque<int>& d,int l,int m,int r)
-{
-	int i = l;
-	int j = m+1;
-	int k = r;
-	int arr[d.size()];
-	while (i <= m && j <= r)
-	{
-		if (d[i] <=d[j])
-		{
-			arr[k] = d[i];
-			k++;
-			i++;
-		}
-		else
-		{
-			arr[k] = d[j];
-			k++;
-			j++;
-		}
-	}
-	while ( i <= m)
-	{
-		arr[k] = d[i];
-		i++;
-		k++;
-	}
-	while (j <= r )
-	{
-		arr[k] = d[j];
-		j++;
-		k++;
-	}
-	for (int f = l; f <= r; f++)
-	{
-		d[f] = arr[f];
-	}
-	
+void Morge(std::vector<int>& arr, int l, int m, int r) {
+    int n1 = m - l + 1;
+    int n2 = r - m;
+
+    std::vector<int> L(n1), R(n2);
+
+    for (int i = 0; i < n1; i++) {
+        L[i] = arr[l + i];
+    }
+
+    for (int j = 0; j < n2; j++) {
+        R[j] = arr[m + 1 + j];
+    }
+
+    int i = 0, j = 0, k = l;
+
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
 }
 
-void PmergeMe::MergeSortRecursion(std::deque<int>& d,int l,int r){
-	if(l >= r)
-		return;
-	int m = l + (r-l)/2;
-	MergeSortRecursion(d,l,m);
-	MergeSortRecursion(d,m+1,r);
-	MergeSorted(d,l,m,r);
+void Sort(std::vector<int>& arr, int l, int r) {
+    if (l < r) {
+        int m = l + (r - l) / 2;
+        Sort(arr, l, m);
+        Sort(arr, m + 1, r);
+        Morge(arr, l, m, r);
+    }
 }
-
-void PmergeMe::MergeSort(std::deque<int>& d){
-	gettimeofday(&ST,NULL);
-	MergeSortRecursion(d,0,d.size()-1);
-	gettimeofday(&ET,NULL);
-	displayTime("deque");
-}
-
 void PmergeMe::start(){
-		LoadingInfo(vect);
-		displaySequence("Before:",vect);
-		MergeSort(this->vect);
-		MergeSort(this->dequ);
+	LoadingInfo(vect);
+	displaySequence("Before:",vect);
+	Sort(this->vect,0,vect.size()-1);
+	displaySequence("After:",vect);
+
+	//Sort(this->dequ,0,dequ.size()-1);
+
 }
 
 int main(int ac, char **av) {

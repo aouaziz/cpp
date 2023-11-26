@@ -112,3 +112,60 @@ void PmergeMe::processInput( std::string input) {
 		throw std::invalid_argument("Invalid argument.");
     vect.push_back(n);
 }
+
+
+void PmergeMe::MergeSorted(std::deque<int>& d,int l,int m,int r)
+{
+	int i = l;
+	int j = m+1;
+	int k = r;
+	int arr[d.size()];
+	while (i <= m && j <= r)
+	{
+		if (d[i] <=d[j])
+		{
+			arr[k] = d[i];
+			k++;
+			i++;
+		}
+		else
+		{
+			arr[k] = d[j];
+			k++;
+			j++;
+		}
+	}
+	while ( i <= m)
+	{
+		arr[k] = d[i];
+		i++;
+		k++;
+	}
+	while (j <= r )
+	{
+		arr[k] = d[j];
+		j++;
+		k++;
+	}
+	for (int f = l; f <= r; f++)
+	{
+		d[f] = arr[f];
+	}
+	
+}
+
+void PmergeMe::MergeSortRecursion(std::deque<int>& d,int l,int r){
+	if(l >= r)
+		return;
+	int m = l + (r-l)/2;
+	MergeSortRecursion(d,l,m);
+	MergeSortRecursion(d,m+1,r);
+	MergeSorted(d,l,m,r);
+}
+
+void PmergeMe::MergeSort(std::deque<int>& d){
+	gettimeofday(&ST,NULL);
+	MergeSortRecursion(d,0,d.size()-1);
+	gettimeofday(&ET,NULL);
+	displayTime("deque");
+}
