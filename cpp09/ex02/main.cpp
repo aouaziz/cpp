@@ -1,6 +1,6 @@
 #include "PmergeMe.hpp"
 
-void Morge(std::deque<int>& arr, int l, int m, int r) {
+void Merge(std::deque<int>& arr, int l, int m, int r) {
     int n1 = m - l + 1;
     int n2 = r - m;
 
@@ -45,10 +45,10 @@ void Sort(std::deque<int>& arr, int l, int r) {
         int m = l + (r - l) / 2;
         Sort(arr, l, m);
         Sort(arr, m + 1, r);
-        Morge(arr, l, m, r);
+        Merge(arr, l, m, r);
     }
 }
-void Morge(std::vector<int>& arr, int l, int m, int r) {
+void Merge(std::vector<int>& arr, int l, int m, int r) {
     int n1 = m - l + 1;
     int n2 = r - m;
 
@@ -93,7 +93,7 @@ void Sort(std::vector<int>& arr, int l, int r) {
         int m = l + (r - l) / 2;
         Sort(arr, l, m);
         Sort(arr, m + 1, r);
-        Morge(arr, l, m, r);
+        Merge(arr, l, m, r);
     }
 }
 void PmergeMe::start(){
