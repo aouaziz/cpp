@@ -2,9 +2,11 @@
 #define BITCOINEXCHANGE_HPP
 
 #include <iostream>
+#include <algorithm>
 #include <sstream>
 #include <map>
 #include <fstream>
+#include <string>
 
 
 class BitcoinExchange
@@ -22,8 +24,9 @@ class BitcoinExchange
         bool CheckPipe(std::string line);
         bool CheckData(float value);
         void printData(std::string Data,float input_value , float Data_value);
-        float CheckMap(std::string Data);
         bool isValidValue( std::string value) ;
+        void findClosestData(std::string Data,float input_value);
+        bool CheckDataValidation(std::string Data);
 };
 
 

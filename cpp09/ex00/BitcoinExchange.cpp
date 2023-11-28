@@ -28,6 +28,7 @@ void BitcoinExchange::start()
     std::string line;
     std::string Data;
     float value;
+    std::getline(file,line);
     while (std::getline(file,line))
     {
         Data = line.substr(0,10);
@@ -37,16 +38,6 @@ void BitcoinExchange::start()
         this->data.insert(std::make_pair(Data,value));
     }
     file.close();
-}
-float BitcoinExchange::CheckMap(std::string Data) {
-    std::map<std::string, float>::const_iterator it;
-    for (it = data.begin(); it != data.end(); ++it) {
-        if (it->first == Data) {
-            return it->second;
-        }
-    }
-    std::cout << "Error: No match found for Data: " << Data << "\n";
-    return 0;
 }
 void BitcoinExchange::CheckPipE(std::string line)
 {
@@ -102,4 +93,19 @@ bool BitcoinExchange::isValidValue(std::string value) {
     }
 
     return true;
+}
+
+bool  BitcoinExchange::CheckData(float value)
+{
+    if(value < 0 )
+    {
+       std::cerr <<"Error: not a positive number.\n";
+       return false;
+    }
+    else if(value > 1000)
+    {
+       std::cerr <<"Error: too large a number.\n";
+       return false;
+    }   
+    return true; 
 }

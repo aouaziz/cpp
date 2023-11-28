@@ -1,20 +1,54 @@
 #include "BitcoinExchange.hpp"
 
-
-bool  BitcoinExchange::CheckData(float value)
+bool BitcoinExchange::CheckDataValidation(std::string Data)
 {
-    if(value < 0 )
+    int year, month, day;
+    std::map<std::string, float> ::iterator it = data.begin();
+    if (std::sscanf(Data.c_str(), "%d-%d-%d", &year, &month, &day) != 3) 
     {
-       std::cerr <<"Error: not a positive number.\n";
-       return false;
+        std::cerr <<"Invalid date format\n";
+        return true;
     }
-    else if(value > 1000)
+    else if(year < std::atoi(it->first.substr(0, 4).c_str()))
     {
-       std::cerr <<"Error: too large a number.\n";
-       return false;
-    }   
-    return true; 
+         std::cerr << "Year is earlier than the earliest year in the map\n";
+        return true;
+    }
+    else if (month < 1 || month > 12) 
+    {
+         std::cerr << "Month out of range\n";
+        return true;
+    }
+    else if(month == 2 && day >29)
+    {
+         std::cerr << "Day out of range for the given month\n";
+        return true;
+    }
+    else if (day < 1 || day > 31) 
+    {
+        std::cerr << "Day out of range for the given month\n";
+        return true;
+    }
+    return false;
 }
+void BitcoinExchange::findClosestData(std::string Data,float input_value)
+{
+    if(CheckDataValidation(Data))
+        return;
+    std::map<std::string, float> ::iterator it = data.find(Data);
+    if(it != data.end())
+    {
+        printData(Data,input_value,it->second);
+        return; 
+    }
+    it = data.lower_bound(Data);
+    if(it == data.end())
+        it--;
+    printData(it->first,input_value,it->second);
+    return; 
+    
+}
+
 
 void BitcoinExchange::processInputFile(std::string filename)
 {
@@ -38,11 +72,7 @@ void BitcoinExchange::processInputFile(std::string filename)
             convert << check;
             convert >> value;
             if(isValidValue(check) && CheckData(value))
-            {
-                float final = CheckMap(Data);
-                if(final)
-                    printData(Data,value,final);
-            }
+                findClosestData(Data,value);
         }
         else 
         {
