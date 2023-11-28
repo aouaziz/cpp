@@ -53,8 +53,6 @@ void PmergeMe::processInput(std::string input) {
 			throw std::invalid_argument("Invalid input: negative number.");
 	}
 	int n = std::atoi(input.c_str());
-	if (std::find(vect.begin(), vect.end(), n) != vect.end()) 
-    	throw std::invalid_argument("Duplicate number detected.");
   vect.push_back(n);
 }
 
